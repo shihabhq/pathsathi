@@ -85,8 +85,8 @@ export default function PresenterOverlay({ demo }: { demo: DemoController }) {
       </div>
 
       <p className="opacity-60">
-        Space/Right next, Left prev, R restart, F frame, H hide, P autoplay. On a phone: top-right
-        corner tap advances, top-left corner tap opens or closes this panel.
+        Space/Right next, Left prev, R restart, F frame, H hide, P autoplay. On a phone: top-left
+        corner tap = next step, top-right corner tap = play from start (tap again to stop).
       </p>
     </aside>
   );
