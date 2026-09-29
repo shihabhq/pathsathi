@@ -1,10 +1,10 @@
 import { Suspense } from "react";
-import DemoApp from "@/components/DemoApp";
+import FamilyView from "@/components/FamilyView";
 
-export default function Home() {
+export default function FamilyPage() {
   return (
     <Suspense fallback={<div className="h-dvh bg-background" />}>
-      <DemoApp />
+      <FamilyView />
     </Suspense>
   );
 }
