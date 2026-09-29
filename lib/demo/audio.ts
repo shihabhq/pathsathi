@@ -116,18 +116,24 @@ export function tick() {
 export type VibratePattern = "left" | "right" | "stop" | "short";
 
 // Each pattern feels different: left = 2 pulses, right = 3 pulses, stop = 1 long, short = 1 short.
+// Pulses are long on purpose: phone motors barely register anything under about 200 ms.
 export const VIBRATE_MS: Record<VibratePattern, number[]> = {
-  left: [120, 80, 120],
-  right: [120, 80, 120, 80, 120],
-  stop: [600],
-  short: [120],
+  left: [300, 150, 300],
+  right: [300, 150, 300, 150, 300],
+  stop: [900],
+  short: [250],
 };
+
+/** Raw vibration. Only works on Android (Chrome), after the page has been tapped once. */
+export function vibrateMs(pattern: number | number[]) {
+  try {
+    navigator.vibrate?.(pattern);
+  } catch {}
+}
 
 /** Real vibration where supported. The UI always shows the visual indicator too. */
 export function vibrate(pattern: VibratePattern) {
-  try {
-    navigator.vibrate?.(VIBRATE_MS[pattern]);
-  } catch {}
+  vibrateMs(VIBRATE_MS[pattern]);
 }
 
 /** Warm the browser cache so the first play of each clip has no delay. */

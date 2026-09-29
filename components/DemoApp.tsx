@@ -11,7 +11,7 @@ import RouteScreen from "./scenes/RouteScreen";
 import WalkingScreen from "./scenes/WalkingScreen";
 import ArrivalScreen from "./scenes/ArrivalScreen";
 import FamilyScreen from "./FamilyScreen";
-import { chime, preloadAudio, speak, stopVoice } from "@/lib/demo/audio";
+import { chime, preloadAudio, speak, stopVoice, vibrateMs } from "@/lib/demo/audio";
 import { STEPS } from "@/lib/demo/scenes";
 import { TIMELINE } from "@/lib/demo/timeline";
 import { useDemoController } from "@/lib/demo/useDemoController";
@@ -38,7 +38,11 @@ export default function DemoApp() {
   useEffect(() => {
     stopVoice();
     if (!demo.voice || showFamily) return;
-    if (step.id === "wake") chime();
+    if (step.id === "wake") {
+      chime();
+      vibrateMs(300);
+    }
+    if (step.id === "arrival") vibrateMs([250, 120, 250, 120, 600]);
     if (step.line?.who === "agent") speak(step.line.id, step.line.text);
     return stopVoice;
   }, [step, demo.voice, showFamily]);
@@ -113,33 +117,42 @@ export default function DemoApp() {
           )}
         </AnimatePresence>
 
-        {/* Invisible 48px tap zones for phones (they also unlock browser audio).
-            Top-left: next step. Top-right: play the whole demo from the start.
-            Bottom-right: show or hide the family view. */}
+        {/* Invisible tap zones for phones (a tap also unlocks browser audio and vibration).
+            Top-left: next step. Top-middle: play the whole demo from the start.
+            Bottom-right: show or hide the family view. They start below the notch or status bar
+            because phones swallow taps at the very top edge. */}
         <button
           aria-hidden
           tabIndex={-1}
           onClick={() => {
+            vibrateMs(30);
             closeFamily();
             demo.next();
           }}
-          className="absolute left-0 top-0 z-40 size-12 cursor-default opacity-0"
+          style={{ top: "max(env(safe-area-inset-top), 12px)" }}
+          className="absolute left-0 z-40 h-14 w-16 cursor-default opacity-0"
         />
         <button
           aria-hidden
           tabIndex={-1}
           onClick={() => {
+            vibrateMs(30);
             closeFamily();
             demo.restart();
             demo.setAutoplay(true);
           }}
-          className="absolute right-0 top-0 z-40 size-12 cursor-default opacity-0"
+          style={{ top: "max(env(safe-area-inset-top), 12px)" }}
+          className="absolute left-1/2 z-40 h-14 w-28 -translate-x-1/2 cursor-default opacity-0"
         />
         <button
           aria-hidden
           tabIndex={-1}
-          onClick={toggleFamily}
-          className="absolute bottom-0 right-0 z-40 size-12 cursor-default opacity-0"
+          onClick={() => {
+            vibrateMs(30);
+            toggleFamily();
+          }}
+          style={{ bottom: "max(env(safe-area-inset-bottom), 12px)" }}
+          className="absolute right-0 z-40 size-16 cursor-default opacity-0"
         />
       </PhoneFrame>
       <PresenterOverlay demo={demo} />

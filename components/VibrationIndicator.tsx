@@ -12,10 +12,10 @@ const NAME: Record<Vibrate, string> = {
 
 // Pulse lengths in ms, mirrored in lib/demo/audio.ts (VIBRATE_MS).
 const PULSES: Record<Vibrate, number[]> = {
-  left: [120, 120],
-  right: [120, 120, 120],
-  stop: [600],
-  short: [120],
+  left: [300, 300],
+  right: [300, 300, 300],
+  stop: [900],
+  short: [250],
 };
 
 /** Shows the phone "buzzing" with the pattern name and the pulse pattern as bars. */
@@ -42,7 +42,7 @@ export default function VibrationIndicator({ pattern, id }: { pattern: Vibrate |
       </motion.div>
       <div className="flex h-2 items-center gap-1">
         {(pattern ? PULSES[pattern] : []).map((ms, i) => (
-          <span key={i} className="h-2 rounded-full bg-accent" style={{ width: ms / 12 }} />
+          <span key={i} className="h-2 rounded-full bg-accent" style={{ width: ms / 20 }} />
         ))}
       </div>
       <div className="h-7 text-lg font-semibold leading-7 text-accent">{pattern ? NAME[pattern] : ""}</div>
