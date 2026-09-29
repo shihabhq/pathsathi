@@ -24,7 +24,7 @@ export default function RouteScreen({ step, index }: { step: Step; index: number
         <RouteMap />
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 z-10 rounded-t-[32px] bg-black/85 px-5 pb-8 pt-3 backdrop-blur-md">
+      <div className="absolute inset-x-0 bottom-0 z-10 rounded-t-[32px] bg-card px-5 pb-8 pt-3 backdrop-blur-xl">
         <div className="flex items-center justify-center">
           <div className="size-[72px]">
             <div className="origin-top-left scale-[0.41]">

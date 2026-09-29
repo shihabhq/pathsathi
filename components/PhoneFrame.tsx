@@ -35,12 +35,12 @@ export default function PhoneFrame({
     <div
       className={
         enabled
-          ? "fixed inset-0 flex items-center justify-center overflow-hidden bg-[#050505]"
+          ? "fixed inset-0 flex items-center justify-center overflow-hidden bg-ink"
           : "h-dvh w-full"
       }
     >
       <div
-        className={enabled ? "shrink-0 bg-[#2a2a2c] shadow-[0_30px_80px_#000]" : "h-full w-full"}
+        className={enabled ? "shrink-0 bg-[#16233f] shadow-[0_30px_80px_#000]" : "h-full w-full"}
         style={
           enabled
             ? {
@@ -54,7 +54,7 @@ export default function PhoneFrame({
         }
       >
         <div
-          className="relative h-full w-full overflow-hidden bg-background"
+          className="relative h-full w-full overflow-hidden app-bg"
           style={enabled ? { borderRadius: 44 } : undefined}
         >
           {children}

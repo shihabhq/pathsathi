@@ -167,10 +167,10 @@ export default function WalkingScreen({ step, voice, source, presenter, startAt,
   const showVideo = media !== "missing" || source === "camera";
 
   return (
-    <div ref={wrapRef} className="relative h-full overflow-hidden bg-black">
+    <div ref={wrapRef} className="relative h-full overflow-hidden bg-ink">
       {/* Placeholder when street.mp4 is missing */}
       {media === "missing" && (
-        <div className="absolute inset-0 bg-gradient-to-b from-[#20242c] via-[#14161b] to-[#0b0b0c]">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#12306B] via-[#0A1A3F] to-[#05070D]">
           {presenter && (
             <p lang="en" className="absolute inset-x-6 top-1/2 text-center font-sans text-sm text-white/60">
               Presenter note: public/demo/street.mp4 was not found. Alerts still run on a timer.
@@ -208,8 +208,8 @@ export default function WalkingScreen({ step, voice, source, presenter, startAt,
       </div>
 
       {/* Scrims keep text readable over any footage */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-black/70 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-black/85 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-[#05070D]/75 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[26rem] bg-gradient-to-t from-[#05070D]/90 via-[#05070D]/60 to-transparent" />
 
       <div className="absolute inset-x-4 top-14 z-10">
         <AlertBanner entry={active} />

@@ -32,7 +32,7 @@ export default function VibrationIndicator({ pattern, id }: { pattern: Vibrate |
         animate={on ? { x: [0, -4, 4, -4, 4, 0] } : { x: 0 }}
         transition={{ duration: 0.4, repeat: on ? 3 : 0 }}
         className={`flex size-[72px] items-center justify-center rounded-full ${
-          on ? "bg-accent text-black" : "bg-black/60 text-white/50"
+          on ? "bg-accent text-ink" : "bg-card text-muted backdrop-blur-md"
         }`}
       >
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">

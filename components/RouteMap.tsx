@@ -86,8 +86,8 @@ export default function RouteMap() {
 
       {progress > 0 && (
         <>
-          <Polyline positions={line} pathOptions={{ color: "#FFD60A", weight: 14, opacity: 0.25, lineCap: "round" }} />
-          <Polyline positions={line} pathOptions={{ color: "#FFD60A", weight: 5, lineCap: "round", lineJoin: "round" }} />
+          <Polyline positions={line} pathOptions={{ color: "#3DA9FC", weight: 14, opacity: 0.25, lineCap: "round" }} />
+          <Polyline positions={line} pathOptions={{ color: "#3DA9FC", weight: 5, lineCap: "round", lineJoin: "round" }} />
         </>
       )}
 

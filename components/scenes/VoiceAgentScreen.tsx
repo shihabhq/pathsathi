@@ -15,8 +15,8 @@ export default function VoiceAgentScreen({ step, index }: { step: Step; index: n
   return (
     <div className="flex h-full flex-col px-5 pb-10 pt-16">
       <header className="text-center">
-        <h1 className="text-3xl font-bold text-accent">পথসাথী</h1>
-        <p className="mt-1 text-xl text-white/70">{agentSpeaking ? "বলছে" : "শুনছে"}</p>
+        <h1 className="text-3xl font-bold text-highlight">পথসাথী</h1>
+        <p className="mt-1 text-xl text-muted">{agentSpeaking ? "বলছে" : "শুনছে"}</p>
       </header>
 
       <div aria-live="polite" className="flex flex-1 flex-col justify-center gap-5">

@@ -11,7 +11,7 @@ export default function PresenterOverlay({ demo }: { demo: DemoController }) {
     <button
       onClick={() => set(!on)}
       className={`rounded px-2 py-1 text-xs font-medium ${
-        on ? "bg-accent text-black" : "bg-white/15 text-white"
+        on ? "bg-accent text-ink" : "bg-white/15 text-white"
       }`}
     >
       {label}: {on ? "on" : "off"}
@@ -21,7 +21,7 @@ export default function PresenterOverlay({ demo }: { demo: DemoController }) {
   return (
     <aside
       lang="en"
-      className="fixed left-3 top-3 z-50 w-72 rounded-xl border border-white/20 bg-black/85 p-3 font-sans text-xs text-white backdrop-blur"
+      className="fixed left-3 top-3 z-50 w-72 rounded-xl border border-white/20 bg-ink/90 p-3 font-sans text-xs text-white backdrop-blur"
     >
       <div className="mb-2 flex items-center justify-between">
         <strong className="text-sm">Presenter</strong>
@@ -36,7 +36,7 @@ export default function PresenterOverlay({ demo }: { demo: DemoController }) {
             <button
               onClick={() => demo.goTo(i)}
               className={`w-full rounded px-2 py-1 text-left ${
-                i === demo.index ? "bg-accent font-semibold text-black" : "hover:bg-white/10"
+                i === demo.index ? "bg-accent font-semibold text-ink" : "hover:bg-white/10"
               }`}
             >
               {i + 1}. [{s.scene}] {s.label}
@@ -53,7 +53,7 @@ export default function PresenterOverlay({ demo }: { demo: DemoController }) {
             demo.setAutoplay(true);
             demo.setOverlay(false);
           }}
-          className="flex-1 rounded bg-accent px-2 py-2 text-sm font-bold text-black"
+          className="flex-1 rounded bg-accent px-2 py-2 text-sm font-bold text-ink"
         >
           Play from start
         </button>

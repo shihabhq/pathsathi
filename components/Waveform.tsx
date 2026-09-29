@@ -12,10 +12,10 @@ const LABELS: Record<WaveMode, string> = {
 
 const BARS = 13;
 
-/** Pulsing ring with animated bars. Yellow while the agent speaks, white while it listens. */
+/** Pulsing ring with animated bars. Blue while the agent speaks, white while it listens. */
 export default function Waveform({ mode }: { mode: WaveMode }) {
   const active = mode !== "idle";
-  const color = mode === "speaking" ? "#FFD60A" : "#FFFFFF";
+  const color = mode === "speaking" ? "#3DA9FC" : "#FFFFFF";
 
   return (
     <div
@@ -35,9 +35,9 @@ export default function Waveform({ mode }: { mode: WaveMode }) {
           />
         ))}
       <div
-        className="flex size-36 items-center justify-center gap-[5px] rounded-full bg-card transition-shadow duration-300"
+        className="flex size-36 items-center justify-center gap-[5px] rounded-full bg-card backdrop-blur-md transition-shadow duration-300"
         style={{
-          boxShadow: active ? `0 0 60px ${color}55, inset 0 0 0 2px ${color}` : "inset 0 0 0 2px #3a3a3c",
+          boxShadow: active ? `0 0 60px ${color}55, inset 0 0 0 2px ${color}` : "inset 0 0 0 2px rgba(169,193,232,0.35)",
         }}
       >
         {Array.from({ length: BARS }, (_, i) => {
@@ -47,7 +47,7 @@ export default function Waveform({ mode }: { mode: WaveMode }) {
             <motion.span
               key={i}
               className="w-[5px] rounded-full"
-              style={{ height: 56, background: active ? color : "#636366" }}
+              style={{ height: 56, background: active ? color : "#5b7bb5" }}
               animate={active ? { scaleY: [0.15, peak, 0.3, peak * 0.8, 0.15] } : { scaleY: 0.1 }}
               transition={
                 active

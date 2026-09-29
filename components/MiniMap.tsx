@@ -34,16 +34,16 @@ export default function MiniMap({ progress }: { progress: number }) {
       width={W}
       height={H}
       viewBox={`0 0 ${W} ${H}`}
-      className="rounded-2xl border border-white/25 bg-black/70 backdrop-blur"
+      className="rounded-2xl border border-white/25 bg-card backdrop-blur-md"
     >
-      <polyline points={path(ROUTE)} fill="none" stroke="#fff" strokeOpacity="0.35" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-      <polyline points={path(routeUpTo(progress))} fill="none" stroke="#FFD60A" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+      <polyline points={path(ROUTE)} fill="none" stroke="#A9C1E8" strokeOpacity="0.55" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+      <polyline points={path(routeUpTo(progress))} fill="none" stroke="#3DA9FC" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
       <circle cx={sx} cy={sy} r="4" fill="#fff" />
       <circle cx={ex} cy={ey} r="5" fill="#30D158" />
-      <circle cx={dx} cy={dy} r="10" fill="#FFD60A" fillOpacity="0.35">
+      <circle cx={dx} cy={dy} r="10" fill="#3DA9FC" fillOpacity="0.4">
         <animate attributeName="r" values="7;13;7" dur="1.4s" repeatCount="indefinite" />
       </circle>
-      <circle cx={dx} cy={dy} r="6" fill="#FFD60A" stroke="#000" strokeWidth="2" />
+      <circle cx={dx} cy={dy} r="6" fill="#3DA9FC" stroke="#fff" strokeWidth="2" />
     </svg>
   );
 }

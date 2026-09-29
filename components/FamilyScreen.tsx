@@ -38,9 +38,9 @@ export default function FamilyScreen() {
           <FamilyMap progress={progress} />
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 z-10 rounded-t-[32px] bg-black/90 px-5 pb-8 pt-6 backdrop-blur-md">
+        <div className="absolute inset-x-0 bottom-0 z-10 rounded-t-[32px] bg-card px-5 pb-8 pt-6 backdrop-blur-xl">
           <div className="flex items-center gap-4">
-            <div className="flex size-16 shrink-0 items-center justify-center rounded-full bg-accent text-3xl font-bold text-black">
+            <div className="flex size-16 shrink-0 items-center justify-center rounded-full bg-accent text-3xl font-bold text-ink">
               র
             </div>
             <div className="min-w-0 flex-1">
@@ -51,17 +51,17 @@ export default function FamilyScreen() {
               </p>
             </div>
             <div className="shrink-0 text-right">
-              <div className="whitespace-nowrap text-lg text-white/70">পৌঁছাতে</div>
+              <div className="whitespace-nowrap text-lg text-muted">পৌঁছাতে</div>
               <div className="flex h-10 items-baseline justify-end gap-2 whitespace-nowrap">
                 <span className="text-3xl font-bold">{toBn(arrived ? 0 : minutesLeft)}</span>
-                <span className="text-lg text-white/80">মিনিট</span>
+                <span className="text-lg text-white">মিনিট</span>
               </div>
             </div>
           </div>
 
           {/* One fixed-height line, so the card never changes size when the name changes. */}
-          <div className="mt-5 rounded-2xl bg-card px-4 py-3">
-            <div className="whitespace-nowrap text-lg text-white/70">বর্তমান অবস্থান</div>
+          <div className="mt-5 rounded-2xl bg-white/10 px-4 py-3">
+            <div className="whitespace-nowrap text-lg text-muted">বর্তমান অবস্থান</div>
             <div className="flex h-10 items-center gap-3">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="#FFD60A" aria-hidden className="shrink-0">
                 <path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />

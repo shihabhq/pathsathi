@@ -37,18 +37,18 @@ export default function ArrivalScreen({ step }: { step: Step }) {
 
       <div aria-live="polite">
         <h1 className="text-4xl font-bold text-safe">{step.line?.text}</h1>
-        <p className="mt-2 text-xl text-white/70">{DESTINATION_NAME}</p>
+        <p className="mt-2 text-xl text-muted">{DESTINATION_NAME}</p>
       </div>
 
       <motion.dl
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.3 }}
-        className="w-full divide-y divide-white/10 rounded-3xl bg-card px-6 py-2"
+        className="w-full divide-y divide-white/15 rounded-3xl bg-card px-6 py-2 backdrop-blur-md"
       >
         {SUMMARY.map((r) => (
           <div key={r.label} className="flex items-center justify-between py-4">
-            <dt className="text-xl text-white/70">{r.label}</dt>
+            <dt className="text-xl text-muted">{r.label}</dt>
             <dd className="text-2xl font-bold">{r.value}</dd>
           </div>
         ))}

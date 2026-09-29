@@ -20,7 +20,7 @@ export default function DirectionArrow({
   severity: Severity | null;
 }) {
   const dir = pattern ?? "short";
-  const colour = severity === "danger" ? "#FF453A" : "#FFD60A";
+  const colour = severity === "danger" ? "#FF453A" : "#3DA9FC";
   return (
     <motion.div
       role="img"
@@ -30,11 +30,11 @@ export default function DirectionArrow({
       className="flex size-[88px] items-center justify-center rounded-full shadow-[0_6px_24px_rgba(0,0,0,0.5)]"
     >
       {dir === "stop" ? (
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="#000">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="#05070D">
           <rect x="4" y="4" width="16" height="16" rx="3" />
         </svg>
       ) : (
-        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#05070D" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
           <path d="M12 20V5M5 11l7-7 7 7" />
         </svg>
       )}

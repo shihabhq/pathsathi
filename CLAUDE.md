@@ -49,7 +49,15 @@ In the real product, the wake word and background running need a native Android 
 
 ## Visual direction
 
-- High contrast, low-vision friendly: near-black background (#0B0B0C), warm yellow accent (#FFD60A), white text, red (#FF453A) for danger alerts, green (#30D158) for "safe / arrived".
+- High contrast, low-vision friendly deep blue theme. Tokens:
+  - Background: gradient #0A1A3F (top) to #12306B (bottom).
+  - Cards: #1B3A7A at 80% opacity with a soft backdrop blur.
+  - Primary accent: #3DA9FC (buttons, waveform, route line, mini map).
+  - Highlight: #FFD60A (brand title, map labels, warning alerts).
+  - Danger: #FF453A. Success: #30D158.
+  - Text: #FFFFFF. Secondary text: #A9C1E8.
+  - The user-mode screen (dark screen with only the waveform, scene 0) stays near-black: #05070D.
+  - Dark text on accent or highlight fills uses #05070D.
 - Large type. Alerts at 28 to 36px. Captions at 20px minimum.
 - Calm, confident, uncluttered. One primary thing on screen at a time.
 - Rounded cards, soft glows around the listening indicator, smooth 200 to 300ms transitions.

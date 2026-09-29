@@ -97,7 +97,7 @@ export default function DemoApp() {
         </AnimatePresence>
 
         {demo.conceptTag && (
-          <span className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-white/10 px-3 py-1 text-sm text-white/70">
+          <span className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-white/10 px-3 py-1 text-sm text-muted">
             কনসেপ্ট ডেমো
           </span>
         )}
@@ -110,7 +110,7 @@ export default function DemoApp() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="absolute inset-0 z-30 bg-background"
+              className="absolute inset-0 z-30 app-bg"
             >
               <FamilyScreen />
             </motion.div>

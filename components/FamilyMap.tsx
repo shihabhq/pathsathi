@@ -47,8 +47,8 @@ export default function FamilyMap({ progress }: { progress: number }) {
       <TileLayer url={OSM} attribution="© OpenStreetMap contributors" maxZoom={19} />
       <AttributionControl position="topleft" prefix={false} />
       <FitRoute />
-      <Polyline positions={ROUTE} pathOptions={{ color: "#1c1c1e", weight: 6, opacity: 0.35, lineCap: "round" }} />
-      <Polyline positions={routeUpTo(progress)} pathOptions={{ color: "#FFB800", weight: 6, lineCap: "round", lineJoin: "round" }} />
+      <Polyline positions={ROUTE} pathOptions={{ color: "#0A1A3F", weight: 6, opacity: 0.35, lineCap: "round" }} />
+      <Polyline positions={routeUpTo(progress)} pathOptions={{ color: "#3DA9FC", weight: 7, lineCap: "round", lineJoin: "round" }} />
       <Marker position={START} icon={endIcon} interactive={false} />
       <Marker position={END} icon={endIcon} interactive={false} />
       <Marker position={pointAt(progress)} icon={personIcon} interactive={false} zIndexOffset={1000} />

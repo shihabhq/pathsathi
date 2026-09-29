@@ -4,9 +4,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { TimelineEntry } from "@/lib/demo/timeline";
 
 const STYLE = {
-  danger: "bg-danger text-white",
-  warn: "bg-accent text-black",
-  info: "bg-white text-black",
+  danger: "bg-danger text-ink",
+  warn: "bg-highlight text-ink",
+  info: "bg-white text-ink",
 } as const;
 
 /** Top alert banner. The wrapper is an assertive live region so screen readers announce it. */

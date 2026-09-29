@@ -12,10 +12,10 @@ export default function CaptionBubble({ who, text }: { who: "agent" | "user"; te
       transition={{ duration: 0.3 }}
       className={`flex flex-col gap-1 ${agent ? "items-start" : "items-end"}`}
     >
-      <span className="px-2 text-base font-medium text-white/60">{agent ? "পথসাথী" : "আপনি"}</span>
+      <span className="px-2 text-base font-medium text-muted">{agent ? "পথসাথী" : "আপনি"}</span>
       <p
         className={`max-w-[88%] rounded-3xl px-5 py-4 text-[22px] font-medium leading-snug ${
-          agent ? "rounded-tl-md bg-card text-white" : "rounded-tr-md bg-accent text-black"
+          agent ? "rounded-tl-md bg-card text-white backdrop-blur-md" : "rounded-tr-md bg-accent text-ink"
         }`}
       >
         {text}
