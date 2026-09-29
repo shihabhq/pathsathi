@@ -87,12 +87,8 @@ export default function DemoApp() {
           aria-hidden
           tabIndex={-1}
           onClick={() => {
-            if (demo.autoplay && !demo.isLast) {
-              demo.setAutoplay(false);
-            } else {
-              demo.restart();
-              demo.setAutoplay(true);
-            }
+            demo.restart();
+            demo.setAutoplay(true);
           }}
           className="absolute right-0 top-0 z-40 size-12 cursor-default opacity-0"
         />

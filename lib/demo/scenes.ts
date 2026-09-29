@@ -31,7 +31,7 @@ export const SCENE_NAMES: Record<SceneId, string> = {
 };
 
 export const STEPS: Step[] = [
-  { id: "idle", scene: 0, label: "Idle home screen", autoMs: 2500 },
+  { id: "idle", scene: 0, label: "Idle home screen", autoMs: 1200 },
   {
     id: "wake",
     scene: 0,
