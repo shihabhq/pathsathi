@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import CaptionBubble from "../CaptionBubble";
+import { AnimatePresence, motion } from "framer-motion";
 import Waveform from "../Waveform";
 import type { Step } from "@/lib/demo/scenes";
 
@@ -65,16 +64,35 @@ export default function WakeScreen({ step }: { step: Step }) {
           </motion.div>
         </div>
 
-        <motion.p
-          animate={{ opacity: waking ? 0 : 1 }}
-          transition={{ duration: 0.3 }}
-          className="mt-8 text-[18px] text-muted"
-        >
-          “পথসাথী” বলুন
-        </motion.p>
-
-        <div aria-live="polite" className="mt-6 min-h-28 w-full">
-          {step.line && <CaptionBubble who={step.line.who} text={step.line.text} />}
+        {/* Under the orb: the hint while idle, then the spoken word as a caption with a mic icon */}
+        <div className="mt-8 grid h-16 w-full place-items-center">
+          <motion.p
+            animate={{ opacity: waking ? 0 : 1 }}
+            transition={{ duration: 0.3 }}
+            className="col-start-1 row-start-1 text-[18px] text-muted"
+          >
+            “পথসাথী” বলুন
+          </motion.p>
+          <div aria-live="polite" className="col-start-1 row-start-1">
+            <AnimatePresence>
+              {waking && step.line && (
+                <motion.p
+                  key={step.line.id}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4, delay: 0.15 }}
+                  className="flex items-center gap-3 text-[30px] font-semibold text-white"
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3DA9FC" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <rect x="9" y="3" width="6" height="11" rx="3" />
+                    <path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21" />
+                  </svg>
+                  {step.line.text}
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </div>

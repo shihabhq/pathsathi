@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { AttributionControl, MapContainer, Marker, Polyline, TileLayer, useMap } from "react-leaflet";
+import MapLabel from "./MapLabel";
 import {
-  DESTINATION_NAME,
+  DESTINATION_SHORT,
   END,
   ROUTE,
   ROUTE_LABELS,
@@ -21,9 +22,10 @@ const ESRI_ATTRIBUTION = "Tiles © Esri, Maxar, Earthstar Geographics, and the G
 const DRAW_DELAY_MS = 1200;
 const DRAW_MS = 3200;
 
-const chip = (text: string, tone: string) =>
-  L.divIcon({ className: "", html: `<div class="map-chip ${tone}">${text}</div>`, iconSize: [0, 0] });
 const dot = (tone = "") => L.divIcon({ className: "", html: `<div class="map-dot ${tone}"></div>`, iconSize: [0, 0] });
+// Small coloured dot for a landmark. The label itself is a plain dark pill (see MapLabel).
+const pin = (colour: string) =>
+  L.divIcon({ className: "", html: `<div class="map-pin" style="background:${colour}"></div>`, iconSize: [0, 0] });
 
 /** Starts wide, then flies in to frame the route above the bottom sheet. */
 function ZoomToRoute() {
@@ -93,12 +95,15 @@ export default function RouteMap() {
 
       <Marker position={START} icon={dot()} interactive={false} />
       {ROUTE_LABELS.filter((l) => progress >= l.at).map((l) => (
-        <Marker key={l.text} position={pointAt(l.at)} icon={chip(l.text, l.tone)} interactive={false} />
+        <Fragment key={l.text}>
+          <Marker position={pointAt(l.at)} icon={pin(l.dot)} interactive={false} />
+          <MapLabel position={pointAt(l.at)} text={l.text} side={l.side} />
+        </Fragment>
       ))}
       {progress >= 1 && (
         <>
           <Marker position={END} icon={dot("dest")} interactive={false} />
-          <Marker position={END} icon={chip(DESTINATION_NAME, "dest")} interactive={false} />
+          <MapLabel position={END} text={DESTINATION_SHORT} side="right" />
         </>
       )}
     </MapContainer>

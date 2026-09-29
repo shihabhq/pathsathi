@@ -45,11 +45,13 @@ export function routeUpTo(p: number): LatLng[] {
 
 /** Map labels that pop in when the drawn line reaches `at`. */
 export const ROUTE_LABELS = [
-  { at: 0.3, text: "ফুটপাত শনাক্ত হয়েছে", tone: "info" },
-  { at: 0.68, text: "ক্রসিং", tone: "warn" },
+  { at: 0.42, text: "ফুটপাত শনাক্ত হয়েছে", dot: "#30D158", side: "right" },
+  { at: 0.68, text: "ক্রসিং", dot: "#FFD60A", side: "left" },
 ] as const;
 
 export const DESTINATION_NAME = "ঢাকা মেডিকেল কলেজ হাসপাতাল";
+/** Short form for the map pill, so it fits on screen. */
+export const DESTINATION_SHORT = "ঢাকা মেডিকেল";
 
 /** Landmark names shown on the family view as the walker progresses (fraction of route). */
 const PLACES = [
