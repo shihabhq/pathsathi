@@ -23,7 +23,7 @@
   --color-safe: var(--safe);
   --color-card: var(--card);
   --color-ink: var(--ink);
-  --color-bubble-agent: #f2f6ff;
+  --color-bubble-agent: #ffffff;
   --color-bubble-user: #1e6fd9;
   --font-sans: var(--font-bangla), system-ui, sans-serif;
 }
@@ -125,6 +125,9 @@ body {
   z-index: 800;
   max-width: calc(100% - 24px);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
   border-radius: 999px;
   padding: 8px 18px;
   font-size: 18px;

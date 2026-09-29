@@ -4,7 +4,7 @@ import { Fragment, useEffect, useMemo, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { AttributionControl, MapContainer, Marker, Polyline, TileLayer, useMap } from "react-leaflet";
-import MapLabel from "./MapLabel";
+import MapLabel, { sheetReserve } from "./MapLabel";
 import {
   DESTINATION_SHORT,
   END,
@@ -34,7 +34,7 @@ function ZoomToRoute() {
     const t = setTimeout(() => {
       map.flyToBounds(L.latLngBounds(ROUTE), {
         paddingTopLeft: [40, 80],
-        paddingBottomRight: [40, 400],
+        paddingBottomRight: [40, sheetReserve(map.getSize().y)],
         duration: 2.2,
       });
     }, 300);

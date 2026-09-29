@@ -20,9 +20,15 @@ function AgentIcon() {
   );
 }
 
+// Speaker labels sit in normal flow above the bubble (never overlapping it). The soft text shadow
+// keeps them readable over bright video.
+const LABEL = "px-1 text-base font-semibold text-muted [text-shadow:0_1px_4px_rgba(5,7,13,0.7)]";
+
 /**
- * Live caption. Agent: light bubble, PathSathi icon on the left, flat top-left corner.
- * User: blue bubble, white text, flat top-right corner.
+ * Live caption.
+ * Agent: white bubble, dark text, 4px blue left border, soft shadow, flat top-left corner,
+ * PathSathi icon on the left and the "পথসাথী" label above the bubble.
+ * User: blue bubble, white text, flat top-right corner, "আপনি" label above.
  */
 export default function CaptionBubble({ who, text }: { who: "agent" | "user"; text: string }) {
   const agent = who === "agent";
@@ -31,19 +37,23 @@ export default function CaptionBubble({ who, text }: { who: "agent" | "user"; te
       initial={{ opacity: 0, y: 16, scale: 0.97 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.3 }}
-      className={`flex w-full flex-col gap-1 ${agent ? "items-start" : "items-end"}`}
+      className={`flex w-full items-start gap-2 ${agent ? "justify-start" : "justify-end"}`}
     >
-      {!agent && <span className="px-2 text-base font-medium text-muted">আপনি</span>}
-      <div className={`flex w-full items-start gap-2 ${agent ? "justify-start" : "justify-end"}`}>
-        {agent && <AgentIcon />}
+      {agent && (
+        // Pushed down by the label's height so the icon lines up with the bubble, not the label.
+        <div className="mt-7.5">
+          <AgentIcon />
+        </div>
+      )}
+      <div className={`flex min-w-0 max-w-[85%] flex-col gap-1.5 ${agent ? "items-start" : "items-end"}`}>
+        <span className={LABEL}>{agent ? "পথসাথী" : "আপনি"}</span>
         <p
-          className={`min-w-0 max-w-[85%] px-6 py-4 text-[22px] font-medium leading-snug shadow-[0_4px_16px_rgba(0,0,0,0.25)] ${
+          className={`px-6 py-4 text-[22px] font-medium leading-snug ${
             agent
-              ? "rounded-3xl rounded-tl-none bg-bubble-agent text-[#0A1A3F]"
-              : "rounded-3xl rounded-tr-none bg-bubble-user text-white"
+              ? "rounded-3xl rounded-tl-none border-l-4 border-[#3DA9FC] bg-white text-[#0A1A3F] shadow-[0_8px_24px_rgba(5,7,13,0.35)]"
+              : "rounded-3xl rounded-tr-none bg-bubble-user text-white shadow-[0_4px_16px_rgba(0,0,0,0.25)]"
           }`}
         >
-          {agent && <span className="sr-only">পথসাথী: </span>}
           {text}
         </p>
       </div>
