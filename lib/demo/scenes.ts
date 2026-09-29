@@ -43,7 +43,11 @@ export const STEPS: Step[] = [
     id: "ask",
     scene: 1,
     label: "Agent asks for destination",
-    line: { id: "agent-ask", who: "agent", text: "আমি শুনছি। কোথায় যেতে চান?" },
+    line: {
+      id: "agent-ask",
+      who: "agent",
+      text: "আমি শুনছি। কোথায় যেতে চান?",
+    },
     autoMs: 4500,
   },
   {
@@ -57,7 +61,12 @@ export const STEPS: Step[] = [
     },
     autoMs: 3500,
   },
-  { id: "route", scene: 2, label: "Route draws on satellite map", autoMs: 5000 },
+  {
+    id: "route",
+    scene: 2,
+    label: "Route draws on satellite map",
+    autoMs: 5000,
+  },
   {
     id: "summary",
     scene: 2,
@@ -65,7 +74,7 @@ export const STEPS: Step[] = [
     line: {
       id: "agent-summary",
       who: "agent",
-      text: "রাস্তা পাওয়া গেছে। দূরত্ব এক দশমিক দুই কিলোমিটার। শুরু করবো?",
+      text: "রাস্তা পাওয়া গেছে। দূরত্ব ১.২ কিলোমিটার। শুরু করবো?",
     },
     autoMs: 8000,
   },

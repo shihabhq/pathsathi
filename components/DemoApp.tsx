@@ -118,9 +118,9 @@ export default function DemoApp() {
         </AnimatePresence>
 
         {/* Invisible tap zones for phones (a tap also unlocks browser audio and vibration).
-            Top-left: next step. Top-middle: play the whole demo from the start.
-            Bottom-right: show or hide the family view. They start below the notch or status bar
-            because phones swallow taps at the very top edge. */}
+            Top-left: next step. Top-middle: reset to the first screen and stop.
+            Top-right: play the whole demo from the start. Bottom-right: family view on/off.
+            They start below the notch or status bar because phones swallow taps at the very top edge. */}
         <button
           aria-hidden
           tabIndex={-1}
@@ -137,12 +137,25 @@ export default function DemoApp() {
           tabIndex={-1}
           onClick={() => {
             vibrateMs(30);
+            stopVoice();
+            closeFamily();
+            demo.setAutoplay(false);
+            demo.restart();
+          }}
+          style={{ top: "max(env(safe-area-inset-top), 12px)" }}
+          className="absolute left-1/2 z-40 h-14 w-28 -translate-x-1/2 cursor-default opacity-0"
+        />
+        <button
+          aria-hidden
+          tabIndex={-1}
+          onClick={() => {
+            vibrateMs(30);
             closeFamily();
             demo.restart();
             demo.setAutoplay(true);
           }}
           style={{ top: "max(env(safe-area-inset-top), 12px)" }}
-          className="absolute left-1/2 z-40 h-14 w-28 -translate-x-1/2 cursor-default opacity-0"
+          className="absolute right-0 z-40 h-14 w-16 cursor-default opacity-0"
         />
         <button
           aria-hidden
