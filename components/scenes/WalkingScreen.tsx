@@ -27,11 +27,13 @@ type Props = {
   presenter: boolean;
   /** Seconds into the clip to start from (?walk=). */
   startAt: number;
+  /** Hold the video while something else (the family view) is on top. */
+  paused?: boolean;
   onCameraFail: () => void;
 };
 
 /** Scenes 3 and 4: camera view with detections, alerts, direction cue, vibration and mini map. */
-export default function WalkingScreen({ step, voice, source, presenter, startAt, onCameraFail }: Props) {
+export default function WalkingScreen({ step, voice, source, presenter, startAt, paused = false, onCameraFail }: Props) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const voiceRef = useRef(voice);
@@ -92,6 +94,13 @@ export default function WalkingScreen({ step, voice, source, presenter, startAt,
       clearTimeout(stop);
     };
   }, [source]);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (paused) v.pause();
+    else if (v.readyState >= 2) void v.play().catch(() => {});
+  }, [paused]);
 
   // Size the picture like object-fit: cover, so boxes stay glued to the video frame.
   useEffect(() => {
