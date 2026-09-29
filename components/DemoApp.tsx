@@ -75,6 +75,14 @@ export default function DemoApp() {
           </span>
         )}
 
+        {/* Invisible 48px tap zone in the top-left corner: shows or hides the presenter panel (for phones). */}
+        <button
+          aria-hidden
+          tabIndex={-1}
+          onClick={() => demo.setOverlay((v) => !v)}
+          className="absolute left-0 top-0 z-40 size-12 cursor-default opacity-0"
+        />
+
         {/* Invisible 48px tap zone in the top-right corner: advances one step. */}
         <button
           aria-hidden

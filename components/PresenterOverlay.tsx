@@ -46,6 +46,22 @@ export default function PresenterOverlay({ demo }: { demo: DemoController }) {
         ))}
       </ol>
 
+      <div className="mb-3 flex gap-1.5">
+        <button
+          onClick={() => {
+            demo.restart();
+            demo.setAutoplay(true);
+            demo.setOverlay(false);
+          }}
+          className="flex-1 rounded bg-accent px-2 py-2 text-sm font-bold text-black"
+        >
+          Play from start
+        </button>
+        <button onClick={() => demo.setOverlay(false)} className="rounded bg-white/15 px-3 py-2 text-sm">
+          Hide
+        </button>
+      </div>
+
       <div className="mb-2 flex flex-wrap gap-1.5">
         <button onClick={demo.prev} className="rounded bg-white/15 px-2 py-1">
           Prev
@@ -69,8 +85,8 @@ export default function PresenterOverlay({ demo }: { demo: DemoController }) {
       </div>
 
       <p className="opacity-60">
-        Space/Right next, Left prev, R restart, F frame, H hide, P autoplay. Top-right corner tap
-        also advances.
+        Space/Right next, Left prev, R restart, F frame, H hide, P autoplay. On a phone: top-right
+        corner tap advances, top-left corner tap opens or closes this panel.
       </p>
     </aside>
   );
